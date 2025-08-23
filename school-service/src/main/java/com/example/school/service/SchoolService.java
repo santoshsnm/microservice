@@ -23,13 +23,13 @@ public class SchoolService {
 	@Autowired
 	FeeApiClient feeClient;
 
-	public Object getStudentDetailsById(String id) {
-
+	public Object getStudentDetailsById(String id) throws Exception {
 		Map<String, Object> map = new LinkedHashMap<>();
 		
-		//calling student service
+		// calling student service
 		Object student = stdClient.getStudentDetails(id);
-		//calling fee service
+		
+		// calling fee service
 		Object payment = feeClient.getFeeDetails(id);
 
 		map.put("student", student);
