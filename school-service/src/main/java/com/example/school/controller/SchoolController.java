@@ -18,7 +18,7 @@ public class SchoolController {
 	SchoolService serv;
 
 	@GetMapping("/get-student-details/student/{id}")
-	public ResponseEntity<Object> getStudent(@PathVariable(value = "id") String id) {
+	public ResponseEntity<Object> getStudent(@PathVariable(value = "id") String id) throws Exception {
 
 		Object stdDetails = serv.getStudentDetailsById(id);
 
@@ -26,7 +26,7 @@ public class SchoolController {
 	}
 
 	@GetMapping("/welcome")
-	public ResponseEntity<Object> getDetails() {
+	public ResponseEntity<Object> getDetails() throws Exception {
 
 		return new ResponseEntity<>("Hii welome", HttpStatus.OK);
 	}
