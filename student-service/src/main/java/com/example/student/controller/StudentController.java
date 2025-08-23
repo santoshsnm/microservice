@@ -3,6 +3,7 @@ package com.example.student.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.student.entity.Student;
-import com.example.student.repository.StudentRepository;
 import com.example.student.service.StudentService;
 
 @RestController
@@ -23,6 +23,9 @@ public class StudentController {
 	@Autowired
 	StudentService service;
 
+	@Value("${server.port}")
+	String port;
+
 	@GetMapping("/welcome")
 	public ResponseEntity<Object> getRoll() {
 
@@ -31,7 +34,7 @@ public class StudentController {
 
 	@GetMapping("/get-student-by-id/{id}")
 	public ResponseEntity<Object> getStudentByName(@PathVariable(name = "id") Long id) throws Exception {
-
+		System.out.println(port);
 		return new ResponseEntity<>(service.getStudentDetailsById(id), HttpStatus.OK);
 	}
 
